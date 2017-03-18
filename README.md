@@ -4,5 +4,26 @@ Purpose of this project will be to develop an easily integratable library for An
 
 Once its done, I ll either try for writing a tutorial either using Android Things OS for Raspberry Pi 3, that ll be integration with HomeBot (another of my project on Collaborizm), or atleast a tutorial and sample app using simple Android OS for phones
 
+Download
+--------
+
+use Gradle:
+
+Add this to project level build.gradle file
+```gradle
+repositories {
+  maven {
+            url 'https://dl.bintray.com/noumanhawkdev/openlibs/'
+        }
+}
+```
+
+Add this to app level build.gradle file
+```
+dependencies {
+    compile 'org.hawkdev.libs:kandy-gradle:1.1-alpha'
+}
+```
+
 # Collaborizm Project Link
 https://www.collaborizm.com/project/Sye8rBKix 
