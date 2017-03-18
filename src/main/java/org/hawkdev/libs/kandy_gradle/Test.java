@@ -5,4 +5,11 @@ package org.hawkdev.libs.kandy_gradle;
  */
 
 public class Test {
+
+    KandyUtils kandyUtils = new KandyUtils();
+
+    public Test(){
+        int texxt =  KandyUtils.sumNumbers(123, 12);
+
+    }
 }
