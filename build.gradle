@@ -1,6 +1,29 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.github.dcendents.android-maven'
 
+ext {
+    bintrayRepo = 'openlibs'
+    bintrayName = 'kandy-gradle'
+
+    publishedGroupId = 'org.hawkdev.libs'
+    libraryName = 'KandyGradle'
+    artifact = 'kandy-gradle'
+
+    libraryDescription = 'A wrapper for Kandy Android Sdk on Android for easy Gradle integration'
+
+    siteUrl = 'https://github.com/noumantahir/kandy-io-gradle'
+    gitUrl = 'https://github.com/noumantahir/kandy-io-gradle.git'
+
+    libraryVersion = '0.1'
+
+    developerId = 'noumanhawkdev'
+    developerName = 'Nouman Tahir'
+    developerEmail = 'nouman.hawkdev@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
 
 android {
     compileSdkVersion 25
@@ -32,6 +55,10 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.0'
     testCompile 'junit:junit:4.12'
 }
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+
 //
 //install {
 //    repositories.mavenInstaller {
@@ -67,35 +94,35 @@ dependencies {
 //    }
 //}
 
-publishing {
-    publications {
-        MyPublication(MavenPublication) {
-            from components.java
-            groupId 'org.hawkdev.libs'
-            artifactId 'kandy-gradle'
-            version '0.1-alpha'
-        }
-    }
-}
-
-bintray {
-    user = 'noumanhawkdev'
-    key = '158214566a56f99aabbf512c810fe94ee042aeef'
-    publications = ['MyPublication']
-    pkg {
-        repo = 'openlibs'
-        name = 'kandy-gradle'
-        licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/noumantahir/kandy-io-gradle.git'
-        userOrg = 'noumanhawkdev'
-        version {
-            name = '0.1-alpha'
-            desc = 'Gradle Bintray Plugin 0.1 alpha'
-            released  = new Date()
-            vcsTag = '0.1'
-            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
-        }
-    }
-}
+//publishing {
+//    publications {
+//        MyPublication(MavenPublication) {
+//            from components.java
+//            groupId 'org.hawkdev.libs'
+//            artifactId 'kandy-gradle'
+//            version '0.1-alpha'
+//        }
+//    }
+//}
+//
+//bintray {
+//    user = 'noumanhawkdev'
+//    key = '158214566a56f99aabbf512c810fe94ee042aeef'
+//    publications = ['MyPublication']
+//    pkg {
+//        repo = 'openlibs'
+//        name = 'kandy-gradle'
+//        licenses = ['Apache-2.0']
+//        vcsUrl = 'https://github.com/noumantahir/kandy-io-gradle.git'
+//        userOrg = 'noumanhawkdev'
+//        version {
+//            name = '0.1-alpha'
+//            desc = 'Gradle Bintray Plugin 0.1 alpha'
+//            released  = new Date()
+//            vcsTag = '0.1'
+//            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
+//        }
+//    }
+//}
 
 
