@@ -19,7 +19,7 @@ repositories {
 Add this to app level build.gradle file
 ```
 dependencies {
-    compile 'compile 'org.hawkdev.libs:kandy-io-gradle:0.5-alpha'
+    compile 'org.hawkdev.libs:kandy-io-gradle:0.5-alpha'
 }
 ```
 
