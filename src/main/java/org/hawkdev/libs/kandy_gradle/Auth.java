@@ -1,12 +1,12 @@
 package org.hawkdev.libs.kandy_gradle;
 
+
 import com.genband.kandy.api.Kandy;
 import com.genband.kandy.api.access.KandyConnectionState;
 import com.genband.kandy.api.access.KandyLoginResponseListener;
 import com.genband.kandy.api.access.KandyLogoutResponseListener;
 import com.genband.kandy.api.services.calls.KandyRecord;
 import com.genband.kandy.api.utils.KandyIllegalArgumentException;
-
 
 /**
  * Created by nomo on 24/03/2017.
