@@ -15,10 +15,19 @@ import static android.Manifest.permission;
 
 /**
  * Created by nomo on 18/03/2017.
+ * this class is the primary point of intraction with kandy gradle library, it initializes the kandy sdk,
+ * gives access to various kandy features like initialization, authentication, sms, and calling etc
  */
 
 public class KandyGradle {
 
+
+    /**initilizes kandy sdk with api and secret, it fetches the information from meta-data storeed
+     * in the AndroidManifest.xml file
+     *
+     * @param context
+     * @return
+     */
     @RequiresPermission(allOf = {permission.READ_PHONE_STATE, permission.CAMERA, permission.RECORD_AUDIO,
             permission.WAKE_LOCK, permission.ACCESS_NETWORK_STATE, permission.INTERNET })
     public static KandyGradle init(Context context) {
@@ -47,25 +56,32 @@ public class KandyGradle {
         return new KandyGradle();
     }
 
+
+    /**
+     * returns instance for Auth, used to log in , log out and check kandy connection statis
+
+     */
     public static Auth getAuth(){
         return new Auth();
     }
 
+    /**
+     * reuturns the sms service instance for sending sms using cellular network
+
+     */
     public static SmsService getSmsService(){
         return new SmsService();
     }
 
-    public static CallingService newCallingService(KandyView localKandyView, KandyView remoteKandyView){
-        return new CallingService(localKandyView, remoteKandyView);
+
+    /**
+     * creats and returns the calling service instance, its takes in kandy gradle video view for local and remote
+     * views along with incoming calls and notification listeners
+     */
+    public static CallingService newCallingService(KandyView localKandyView, KandyView remoteKandyView,
+                                                   CallingService.CallNotificationListener callNotificationListener){
+        return new CallingService(localKandyView, remoteKandyView, callNotificationListener);
     }
 
-    public static void registerCallReceiverListener( KandyCallServiceNotificationListener callListener){
-        Kandy.getServices().getCallService().registerNotificationListener(callListener);
-    }
-
-    public static void unregisterCallReceiverListener( KandyCallServiceNotificationListener callListener){
-        Kandy.getServices().getCallService().unregisterNotificationListener(callListener);
-        callListener = null;
-    }
 
 }

@@ -7,19 +7,27 @@ import com.genband.kandy.api.utils.KandyIllegalArgumentException;
 
 /**
  * Created by nomo on 24/03/2017.
+ * a simple service build using the kandy android sdk, primary purpose of this class is to simplify
+ * the sms sending process provided by the kandy it self
  */
 
 public class SmsService {
 
+    //respnose codes for SmsResponseListener
     private static final int RESPONSE_ILLEGAL_ARGUMENT = 0;
     private static final int RESPONSE_SMS_FAILURE = 1;
     private static final int RESPONSE_SMS_SENT = 2;
 
-    interface SmsResponseListener{
+
+    public interface SmsResponseListener{
         void response(int responseCode, String responseMsg);
     }
 
-    private void sendSMS(String phoneNumber, String messageText,final SmsResponseListener smsResponseListener) {
+    /**
+     * the class send sms to the provided phone number along with providing responses using SmsResponseListerner
+     * that is also provided as a parameter
+     */
+    public void sendSMS(String phoneNumber, String messageText, final SmsResponseListener smsResponseListener) {
 
         KandySMSMessage message = null;
         try
