@@ -37,7 +37,7 @@ KandyGradle.init(this);
 ```
 Add this will automatically prompt to add code for necessary permission check, also this library will add all required permissions in Manifest automatically.
 
-**Logging user into Kandy**
+##**Logging user into Kandy**
 
 Once initialized first thing to do will be loggin into user, for this take username and password
 use this simple method to login. for making is easy to handle state changes, implementing class with state change listeners is good idea
@@ -100,7 +100,7 @@ this simple check
 ```
 
 
-**Sending an SMS**
+##**Sending an SMS**
 
 After setting up and logging in, the simplest thing to do can be sending an SMS to a phoneNumber using 
 Kandy
@@ -115,7 +115,7 @@ Kandy
 ```
 
 
-**Getting Ready for phone calls**
+##**Getting Ready for phone calls**
 
 This wrapper makes sure the making phone calls is way more simplified than the actual sdk, one might 
 argue this has limited the functionality of actual sdk but not to forget you can always access Kandy 
@@ -169,7 +169,7 @@ A sample xml for video widgets is given below
         android:layout_height="100dp" />
 ```
 
-**Making Calls**
+##**Making Calls**
 
 This have become dramatically simpler, you really dont have deal with different methods to make simple call,
 below is the code for making different types of calls
@@ -203,7 +203,7 @@ below is the code for making different types of calls
 
 ```
 
-**Receiving and end a call**
+##**Receiving and end a call**
 
 after getting call back in the initialization of calling service, you can easily use these methods,
 rest of the stuff can be handled by mCallingService instance
@@ -232,7 +232,7 @@ private void receiveCall(){
 
 More over you can always use method  `getiKandyIncomingCall()` and `getiKandyCall()` to access detailed information about the call
 
-**Releaseing Calling Service**
+##**Releaseing Calling Service**
 Its fairly important to release CallingService listeners and resources after using it
 
 ```    @Override
@@ -246,10 +246,10 @@ Its fairly important to release CallingService listeners and resources after usi
 
 
 What's next
---------
+------
 
 To follow Legacy Kandy SDK documentation user, https://developer.kandy.io/tutorials/android/1-8-25
 
 
-# Collaborizm Project Link
+ Collaborizm Project Link
 https://www.collaborizm.com/project/Sye8rBKix 
