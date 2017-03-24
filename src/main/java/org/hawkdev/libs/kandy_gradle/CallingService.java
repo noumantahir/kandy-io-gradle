@@ -63,9 +63,11 @@ public class CallingService implements KandyCallServiceNotificationListener {
 
     /**
      * initilizes calling sever with basic kandy views and listener for calls status
-     * @param mLocalVideoView
-     * @param mRemoteVideoView
-     * @param callNotificationsListener
+
+
+     * @param mLocalVideoView local Video View
+     * @param mRemoteVideoView remote Video view
+     * @param callNotificationsListener call notification listener
      */
     public CallingService(KandyView mLocalVideoView, KandyView mRemoteVideoView,
                           CallNotificationListener callNotificationsListener) {
@@ -81,7 +83,8 @@ public class CallingService implements KandyCallServiceNotificationListener {
     /**
      * checks if there is an incomming call or not , if so receives it and sends a response back on
      * success
-     * @param callResponseListener
+
+     * @param callResponseListener callResponseListner
      */
     public void receiveCall(final CallRequestResponseListener callResponseListener) {
         if(iKandyIncomingCall != null) {
@@ -108,7 +111,7 @@ public class CallingService implements KandyCallServiceNotificationListener {
     /**checks if iKandy is not null means call is under operation, and hangup the call ending the session
      * and also setting kandyCall instance to null
      *
-     * @param callResponseListener
+     * @param callResponseListener callResponseListener
      */
     public void endCall(final CallRequestResponseListener callResponseListener) {
         if(iKandyCall != null){
@@ -133,6 +136,9 @@ public class CallingService implements KandyCallServiceNotificationListener {
 
     /**
      * a simple one line call for making a video call to a user, returns a response using callRequestResponse Listener
+     *
+     * @param recipientUsername recipientUsername
+     * @param callRequestResponseListener callRequestResponseListener
      */
     public void makeVideoCall(String recipientUsername,
                               final CallRequestResponseListener callRequestResponseListener){
@@ -154,6 +160,9 @@ public class CallingService implements KandyCallServiceNotificationListener {
 
     /**
      * a simple one line call for making a voice call to a user, returns a response using callRequestResponse Listener
+
+     * @param recipientUsername recipientUsername
+     * @param callRequestResponseListener callRequestResponseListener
      */
     public void makeVoiceCall(String recipientUsername,
                               final CallRequestResponseListener callRequestResponseListener){
@@ -177,6 +186,9 @@ public class CallingService implements KandyCallServiceNotificationListener {
     /**
      * a simple one line call for making a pstn telephony call to a phone number view kandy sdk,
      * returns a response using callRequestResponse Listener
+     *
+     * @param phoneNumber telephone Number
+     * @param callRequestResponseListener callRequestResponseListener
      */
     public void makePstnCall(String phoneNumber, final CallRequestResponseListener callRequestResponseListener){
 
@@ -220,8 +232,7 @@ public class CallingService implements KandyCallServiceNotificationListener {
 
     /**
      * a generic method to make simpel VoIP call
-     * @param recipientUsername
-     * @param callRequestResponseListener
+
      * @param options to select the type of call
      */
     private void makeCall(String recipientUsername, final CallRequestResponseListener callRequestResponseListener, KandyOutgingVoipCallOptions options){
@@ -277,9 +288,10 @@ public class CallingService implements KandyCallServiceNotificationListener {
         Kandy.getServices().getCallService().unregisterNotificationListener(this);
     }
 
+
     /**
-     * returns instance of iKandyCall
-     * @return
+     *
+     * @return instance of iKandyCall
      */
     public IKandyCall getiKandyCallInstance() {
         return iKandyCall;
@@ -287,8 +299,7 @@ public class CallingService implements KandyCallServiceNotificationListener {
 
 
     /**
-     * returns instance of iKandyIncomingCall
-     * @return
+     * @return instance of iKandyIncomingCall
      */
     public IKandyIncomingCall getiKandyIncomingCall() {
         return iKandyIncomingCall;

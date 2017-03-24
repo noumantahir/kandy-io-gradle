@@ -7,7 +7,6 @@ import com.genband.kandy.api.access.KandyLogoutResponseListener;
 import com.genband.kandy.api.services.calls.KandyRecord;
 import com.genband.kandy.api.utils.KandyIllegalArgumentException;
 
-import static com.genband.kandy.api.Kandy.getAccess;
 
 /**
  * Created by nomo on 24/03/2017.
@@ -39,9 +38,10 @@ public class Auth {
     /**
      * uses kandy user name and password along with state listener to login to kandy, this step is
      * essentional before using any of kandy feature
-     * @param username
-     * @param password
-     * @param authStateListener
+
+     * @param username kandy username for this user
+     * @param password password for kandy username
+     * @param authStateListener response listener
      */
     public void login(String username, String password, final AuthStateListener authStateListener){
         KandyRecord kandyRecord = null;
@@ -51,7 +51,7 @@ public class Auth {
             return;
         }
 
-        getAccess().login(kandyRecord, password, new KandyLoginResponseListener() {
+        Kandy.getAccess().login(kandyRecord, password, new KandyLoginResponseListener() {
 
             @Override
             public void onRequestFailed(int responseCode, String err) {
@@ -71,11 +71,12 @@ public class Auth {
 
 
     /**
-     * log use out from kandy
-     * @param authStateListener for returning status
+     * log use out from kandy, uses auth listener for returning status
+
+     * @param authStateListener response listener
      */
     public void logout(final AuthStateListener authStateListener){
-        getAccess().logout(new KandyLogoutResponseListener() {
+        Kandy.getAccess().logout(new KandyLogoutResponseListener() {
 
             @Override
             public void onRequestFailed(int responseCode, String err) {

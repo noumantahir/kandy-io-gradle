@@ -26,6 +26,9 @@ public class SmsService {
     /**
      * the class send sms to the provided phone number along with providing responses using SmsResponseListerner
      * that is also provided as a parameter
+     * @param phoneNumber phoneNumber
+     * @param messageText messageText
+     * @param smsResponseListener smsResponseListener
      */
     public void sendSMS(String phoneNumber, String messageText, final SmsResponseListener smsResponseListener) {
 

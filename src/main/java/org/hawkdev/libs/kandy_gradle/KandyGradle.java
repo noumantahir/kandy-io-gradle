@@ -25,8 +25,8 @@ public class KandyGradle {
     /**initilizes kandy sdk with api and secret, it fetches the information from meta-data storeed
      * in the AndroidManifest.xml file
      *
-     * @param context
-     * @return
+     * @param context context
+     * @return instanse of kandygradle
      */
     @RequiresPermission(allOf = {permission.READ_PHONE_STATE, permission.CAMERA, permission.RECORD_AUDIO,
             permission.WAKE_LOCK, permission.ACCESS_NETWORK_STATE, permission.INTERNET })
@@ -60,6 +60,7 @@ public class KandyGradle {
     /**
      * returns instance for Auth, used to log in , log out and check kandy connection statis
 
+     * @return Auth instance
      */
     public static Auth getAuth(){
         return new Auth();
@@ -68,6 +69,7 @@ public class KandyGradle {
     /**
      * reuturns the sms service instance for sending sms using cellular network
 
+     * @return SmsService instance
      */
     public static SmsService getSmsService(){
         return new SmsService();
@@ -77,6 +79,10 @@ public class KandyGradle {
     /**
      * creats and returns the calling service instance, its takes in kandy gradle video view for local and remote
      * views along with incoming calls and notification listeners
+     * @param localKandyView localKandyView
+     * @param remoteKandyView remoteKandyView
+     * @param callNotificationListener callNotificationListener
+     * @return Calling Service instance
      */
     public static CallingService newCallingService(KandyView localKandyView, KandyView remoteKandyView,
                                                    CallingService.CallNotificationListener callNotificationListener){
