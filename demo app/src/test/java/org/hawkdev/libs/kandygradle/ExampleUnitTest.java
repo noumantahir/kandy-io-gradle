@@ -1,4 +1,4 @@
-package org.hawkdev.apps.kandylibrarytest;
+package org.hawkdev.libs.kandygradle;
 
 import org.junit.Test;
 

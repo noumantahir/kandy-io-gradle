@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.hawkdev.apps.kandylibrarytest">
+    package="org.hawkdev.libs.kandygradle">
 
     <application
         android:allowBackup="true"
@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data android:name="KANDY_API_KEY" android:value="ADD YOUR KEY HERE"/>
+        <meta-data android:name="KANDY_API_SECRET" android:value="ADD YOU SECRET HERE"/>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

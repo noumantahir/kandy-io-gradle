@@ -1,4 +1,4 @@
-package org.hawkdev.apps.kandylibrarytest;
+package org.hawkdev.libs.kandygradle;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("org.hawkdev.apps.kandylibrarytest", appContext.getPackageName());
+        assertEquals("org.hawkdev.libs.kandygradle", appContext.getPackageName());
     }
 }
