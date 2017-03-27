@@ -7,20 +7,10 @@ Once its done, I ll either try for writing a tutorial either using Android Thing
 Usage Android Studio
 --------
 
-Add this to project level build.gradle file
-```gradle
-repositories {
-  maven {
-            url 'https://dl.bintray.com/noumanhawkdev/openlibs/'
-        }
-}
+Add this to dependencies of your app level build.gradle file and thats it, you have Kandy SDK + wrapper library integrated.
 ```
-
-Add this to app level build.gradle file
-```
-dependencies {
-    compile 'org.hawkdev.libs:kandy-io-gradle:0.5-alpha'
-}
+  compile 'org.hawkdev.libs:kandy-io-gradle:0.5-alpha'
+    
 ```
 
 obtain api key using this link, https://developer.kandy.io/tutorials/android/1-8-25#quick-start-step-2-obtain-a-kandy-domain-key-and-secret, 
