@@ -13,7 +13,7 @@ Add this to dependencies of your app level build.gradle file and thats it, you h
 
 obtain api key using this link, https://developer.kandy.io/tutorials/android/1-8-25#quick-start-step-2-obtain-a-kandy-domain-key-and-secret, 
 
-add kandy API Key and API secret to AndroidManifest.xml inside <application> tag
+add kandy API Key and API secret to AndroidManifest.xml inside ```application``` tag
 ```
 <meta-data android:name="KANDY_API_KEY" android:value="ADD API KEY HERE"/>
 <meta-data android:name="KANDY_API_SECRET" android:value="ADD API SECRET HERE"/>
