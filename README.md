@@ -2,30 +2,18 @@
 
 Purpose of this project will be to develop an easily integratable library for Android. Although there is already a Kandy SDK for android but the purpose of this version will be to make the integration process seamless using Gradle Build system.
 
-Once its done, I ll either try for writing a tutorial either using Android Things OS for Raspberry Pi 3, that ll be integration with HomeBot (another of my project on Collaborizm), or atleast a tutorial and sample app using simple Android OS for phones
-
 Usage Android Studio
 --------
 
-Add this to project level build.gradle file
-```gradle
-repositories {
-  maven {
-            url 'https://dl.bintray.com/noumanhawkdev/openlibs/'
-        }
-}
+Add this to dependencies of your app level build.gradle file and thats it, you have Kandy SDK + wrapper library integrated.
 ```
-
-Add this to app level build.gradle file
-```
-dependencies {
-    compile 'org.hawkdev.libs:kandy-io-gradle:0.5-alpha'
-}
+  compile 'org.hawkdev.libs:kandy-io-gradle:0.5-alpha'
+    
 ```
 
 obtain api key using this link, https://developer.kandy.io/tutorials/android/1-8-25#quick-start-step-2-obtain-a-kandy-domain-key-and-secret, 
 
-add kandy API Key and API secret to AndroidManifest.xml inside <application> tag
+add kandy API Key and API secret to AndroidManifest.xml inside ```application``` tag
 ```
 <meta-data android:name="KANDY_API_KEY" android:value="ADD API KEY HERE"/>
 <meta-data android:name="KANDY_API_SECRET" android:value="ADD API SECRET HERE"/>
