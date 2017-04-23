@@ -1,27 +1,23 @@
 package org.hawkdev.libs.kandygradle;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+        import android.Manifest;
+        import android.content.pm.PackageManager;
+        import android.support.v4.app.ActivityCompat;
+        import android.support.v7.app.AppCompatActivity;
+        import android.os.Bundle;
+        import android.view.View;
+        import android.widget.EditText;
+        import android.widget.TextView;
+        import android.widget.Toast;
 
-import com.genband.kandy.api.services.calls.IKandyCall;
-import com.genband.kandy.api.services.calls.IKandyIncomingCall;
-import com.genband.kandy.api.services.calls.KandyCallServiceNotificationListener;
-import com.genband.kandy.api.services.calls.KandyCallState;
+        import com.genband.kandy.api.services.calls.IKandyCall;
+        import com.genband.kandy.api.services.calls.KandyCallState;
 
-import org.hawkdev.libs.kandy_gradle.Auth;
-import org.hawkdev.libs.kandy_gradle.CallingService;
-import org.hawkdev.libs.kandy_gradle.KandyGradle;
-import org.hawkdev.libs.kandy_gradle.KandyGradleView;
-import org.hawkdev.libs.kandy_gradle.SmsService;
-import org.w3c.dom.Text;
-
+        import org.hawkdev.libs.kandy_gradle.Auth;
+        import org.hawkdev.libs.kandy_gradle.CallingService;
+        import org.hawkdev.libs.kandy_gradle.KandyGradle;
+        import org.hawkdev.libs.kandy_gradle.KandyGradleView;
+        import org.hawkdev.libs.kandy_gradle.SmsService;
 
 public class MainActivity extends AppCompatActivity implements Auth.AuthStateListener {
 
@@ -74,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements Auth.AuthStateLis
             @Override
             public void onIncomingVoiceCall() {
                 //TODO: show relevant UI
-                tvCallStatus.setText("incoming missed call");
+                tvCallStatus.setText("incoming voice call");
             }
 
             @Override
@@ -86,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements Auth.AuthStateLis
             @Override
             public void onCallStateChanged(KandyCallState kandyCallState) {
                 //TODO: handle states KandyCallState is an enum
-                tvCallStatus.setText("call status changed");
+                //tvCallStatus.setText("call status changed");
             }
         });
     }
@@ -97,17 +93,19 @@ public class MainActivity extends AppCompatActivity implements Auth.AuthStateLis
         EditText etUsername = (EditText) findViewById(R.id.etUsername);
         EditText etPassword = (EditText) findViewById(R.id.etPassword);
 
-        if(KandyGradle.getAuth().isKandyConnected()){
-            KandyGradle.getAuth().login(etUsername.getText().toString(), etPassword.getText().toString(), this);
-        }
+
+        KandyGradle.getAuth().login(etUsername.getText().toString(), etPassword.getText().toString(), this);
+
+        Toast.makeText(this, "Logging in", Toast.LENGTH_LONG).show();
+
     }
 
 
     //log out a logged in user
     public void logoutUser(View view){
-        if(KandyGradle.getAuth().isKandyConnected()){
-            KandyGradle.getAuth().logout(this);
-        }
+//        if(KandyGradle.getAuth().isKandyConnected()){
+        KandyGradle.getAuth().logout(this);
+//        }
     }
 
 
@@ -118,8 +116,15 @@ public class MainActivity extends AppCompatActivity implements Auth.AuthStateLis
 
         KandyGradle.getSmsService().sendSMS(etPhone.getText().toString(), etBody.getText().toString(), new SmsService.SmsResponseListener() {
             @Override
-            public void response(int responseCode, String responseMsg) {
+            public void response(int responseCode, final String responseMsg) {
                 //TODO: in library the flags for this function is accidently set to private, set them to public
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this, responseMsg, Toast.LENGTH_LONG).show();
+                    }
+                });
+
             }
         });
     }
@@ -241,18 +246,24 @@ public class MainActivity extends AppCompatActivity implements Auth.AuthStateLis
             case Auth.STATUS_CODE_LOGGED_IN:
                 isLoggedIn = true;
                 tvLoginStatus.setText("Logged in");
+                Toast.makeText(this, "Log in successful", Toast.LENGTH_LONG).show();
                 break;
 
             case Auth.STATUS_CODE_LOGGED_OUT:
                 isLoggedIn = false;
                 tvLoginStatus.setText("Logged out");
+                Toast.makeText(this, "Log out successful", Toast.LENGTH_LONG).show();
+
                 break;
 
             case Auth.STATUS_CODE_FAILURE:
                 tvLoginStatus.setText("Login Failed");
+                Toast.makeText(this, "Log in failed", Toast.LENGTH_LONG).show();
+
                 break;
 
         }
     }
 
 }
+
